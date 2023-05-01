@@ -8,8 +8,6 @@ function scatter3D(slider)
   lims = @lift((minimum(v[$s]), maximum(v[$s])))
   data = @lift(Vec3f.(v[$s], v[$s], v[$s]))
   p3D = scatter!(ax3D, data, markersize = 20, strokewidth = 2)
-  #autolimits!(ax3D)
-  #limits!(ax3D, lims) #bug
   xlims!(ax3D, 0, 10) 
   ylims!(ax3D, 0, 10)
   zlims!(ax3D, 0, 10)
@@ -24,5 +22,11 @@ app = App() do
     return DOM.div(sl, fig)
 end
 
-JSServe.Server(app, "131.215.103.129", 9384; proxy_url = "http://131.215.103.129:9384")
+server = JSServe.Server(app, "131.215.103.107", 9384)
+
+# http works, e.g.,
+server.proxy_url = "http://tropo.gps.caltech.edu:9384" # public URL
+
+# https does not, e.g., (static figure, slider move but no reaction)
+server.proxy_url = "https://tropo.gps.caltech.edu:44302" 
 
