@@ -33,3 +33,11 @@ route!(server, "/jsserve" => app)
 # https does not, e.g., (static figure, slider move but no reaction)
 server.proxy_url = "https://tropo.gps.caltech.edu:44302" 
 
+#################
+
+server = JSServe.Server("131.215.103.107", 9384)
+
+server.proxy_url = "https://tropo.gps.caltech.edu:44301/JSServe/" 
+
+route!(server, "/" => app)
+
