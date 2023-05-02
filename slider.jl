@@ -27,17 +27,16 @@ server = JSServe.Server("131.215.103.107", 9384)
 # http works, e.g.,
 server.proxy_url = "http://tropo.gps.caltech.edu:9384" 
 
-# Route
+# Route home
 route!(server, "/" => app)
-
 url_to_visit = online_url(server, "/")
 
-# https does not, e.g., (static figure, slider move but no reaction)
-server.proxy_url = "https://tropo.gps.caltech.edu:44302" 
+# Route jsserve
+route!(server, "/jsserve" => app)
+url_to_visit = online_url(server, "/jsserve")
 
-#################
+################# does not work ##################
 
 server = JSServe.Server("131.215.103.107", 9384)
 server.proxy_url = "https://tropo.gps.caltech.edu:44301" 
 route!(server, "/jsserve" => app)
-
