@@ -1,5 +1,4 @@
 using JSServe, WGLMakie
-
 function scatter3D(slider)
   v = [[1,2,3], [1,4,6], [0,5,10]]
   fig = Figure(resolution = (400, 400))
@@ -14,29 +13,23 @@ function scatter3D(slider)
   fig
   return fig
 end
-
 app = App() do
     slider = JSServe.Slider(1:3)
     fig = scatter3D(slider)
     sl = DOM.div("data: ", slider, slider.value)
     return DOM.div(sl, fig)
 end
-
 server = JSServe.Server("131.215.103.107", 9384)
 
-# http works, e.g.,
+################ works #########################
 server.proxy_url = "http://tropo.gps.caltech.edu:9384" 
 
-# Route home
 route!(server, "/" => app)
 url_to_visit = online_url(server, "/")
 
-# Route jsserve
 route!(server, "/jsserve" => app)
 url_to_visit = online_url(server, "/jsserve")
 
 ################# does not work ##################
-
-server = JSServe.Server("131.215.103.107", 9384)
 server.proxy_url = "https://tropo.gps.caltech.edu:44301" 
 route!(server, "/jsserve" => app)
