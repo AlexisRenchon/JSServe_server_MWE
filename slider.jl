@@ -37,7 +37,7 @@ server.proxy_url = "https://tropo.gps.caltech.edu:44302"
 
 server = JSServe.Server("131.215.103.107", 9384)
 
-server.proxy_url = "https://tropo.gps.caltech.edu:44301/JSServe/" 
+server.proxy_url = "https://tropo.gps.caltech.edu:44301/jsserve" 
 
-route!(server, "/" => app)
+route!(server, "/test" => app)
 
