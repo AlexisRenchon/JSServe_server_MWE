@@ -19,10 +19,10 @@ app = App() do
     sl = DOM.div("data: ", slider, slider.value)
     return DOM.div(sl, fig)
 end
-server = JSServe.Server("131.215.103.107", 9384)
+server = JSServe.Server(app, "20.150.149.135", 9384)
 
 ################ works #########################
-server.proxy_url = "http://tropo.gps.caltech.edu:9384" 
+server.proxy_url = "http://20.150.149.135:9384" 
 
 route!(server, "/" => app)
 url_to_visit = online_url(server, "/")
