@@ -19,17 +19,6 @@ app = App() do
     sl = DOM.div("data: ", slider, slider.value)
     return DOM.div(sl, fig)
 end
-server = JSServe.Server(app, "20.150.149.135", 9384)
 
-################ works #########################
-server.proxy_url = "http://20.150.149.135:9384" 
-
-route!(server, "/" => app)
-url_to_visit = online_url(server, "/")
-
-route!(server, "/jsserve" => app)
-url_to_visit = online_url(server, "/jsserve")
-
-################# does not work ##################
-server.proxy_url = "https://tropo.gps.caltech.edu:44301" 
+server = JSServe.Server(app, "127.0.0.1", 9384; proxy_url="https://climaviz.eastus.cloudapp.azure.com/jsserve");
 route!(server, "/jsserve" => app)
