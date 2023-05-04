@@ -21,4 +21,4 @@ app = App() do
 end
 
 server = Server("127.0.0.1", 9385; proxy_url="https://clima.eastus.cloudapp.azure.com/jsserve/");
-route!(server, "/" => app)
+route!(server,"/"=>app)
