@@ -20,5 +20,5 @@ app = App() do
     return DOM.div(sl, fig)
 end
 
-server = JSServe.Server(app, "127.0.0.1", 9385; proxy_url="https://clima.eastus.cloudapp.azure.com/jsserve");
+server = JSServe.Server(app, "127.0.0.1", 9385; proxy_url="https://clima.eastus.cloudapp.azure.com/jsserve/");
 route!(server, "/" => app)
