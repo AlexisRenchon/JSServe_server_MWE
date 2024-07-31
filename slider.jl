@@ -1,4 +1,4 @@
-using JSServe, WGLMakie
+using Bonito, WGLMakie
 
 function scatter3D(slider)
   v = [[1,2,3], [1,4,6], [0,5,10]]
@@ -18,11 +18,11 @@ function scatter3D(slider)
 end
 
 app = App() do
-    slider = JSServe.Slider(1:3)
+    slider = Bonito.Slider(1:3)
     fig = scatter3D(slider)
     sl = DOM.div("data: ", slider, slider.value)
     return DOM.div(sl, fig)
 end
 
-JSServe.Server(app, "131.215.103.129", 9384; proxy_url = "http://131.215.103.129:9384")
+Bonito.Server(app, "131.215.103.129", 8080; proxy_url = "http://131.215.103.129:8080")
 

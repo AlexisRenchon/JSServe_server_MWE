@@ -1,4 +1,4 @@
-using JSServe, WGLMakie #, MakieCore, Deno_jll
+using Bonito, WGLMakie #, MakieCore, Deno_jll
 
 function mkfig()
   fig = Figure()
@@ -8,9 +8,11 @@ function mkfig()
   return fig
 end
 
-Sampo_IP = "131.215.103.129"
+# Sampo_IP = "131.215.103.129"
 
-JSServe.Server(App(DOM.div(mkfig())), Sampo_IP, 9384)
+calhpc_IP = "131.215.148.255" 
+
+Server(App(DOM.div(mkfig())), calhpc_IP, 9384)
 
 
 # my_app = App() do session::Session
