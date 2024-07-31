@@ -24,5 +24,9 @@ app = App() do
     return DOM.div(sl, fig)
 end
 
-Bonito.Server(app, "131.215.103.129", 8080; proxy_url = "http://131.215.103.129:8080")
+# Sampo
+# Bonito.Server(app, "131.215.103.129", 8080; proxy_url = "http://131.215.103.129:8080")
+
+# calhpc
+Bonito.Server(app, "131.215.148.255", 8080; proxy_url = "http://131.215.148.255:8080")
 
